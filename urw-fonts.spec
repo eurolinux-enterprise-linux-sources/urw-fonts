@@ -5,7 +5,7 @@
 Summary: Free versions of the 35 standard PostScript fonts
 Name: urw-fonts
 Version: 2.4
-Release: 10%{?dist}
+Release: 11%{?dist}
 Source: %{name}-%{filippov_version}.tar.bz2
 URL: http://svn.ghostscript.com/ghostscript/tags/urw-fonts-1.0.7pre44/
 # URW holds copyright
@@ -16,6 +16,7 @@ BuildRoot: %(mktemp -ud %{_tmppath}/%{name}-%{version}-%{release}-XXXXXX)
 BuildArch: noarch
 Requires(post): fontconfig
 Requires(postun): fontconfig
+Requires(post): xorg-x11-font-utils
 
 %description 
 Free, good quality versions of the 35 standard PostScript(TM) fonts,
@@ -47,7 +48,7 @@ sleep 5
 {
    umask 133
    mkfontscale %{fontdir} || :
-   `which mkfontdir` %{fontdir} || :
+   mkfontdir %{fontdir} || :
    fc-cache %{_datadir}/fonts
 } &> /dev/null || :
 
@@ -75,6 +76,9 @@ rm -rf $RPM_BUILD_ROOT
 %{fontdir}/*.pfb
 
 %changelog
+* Wed Jan 20 2016 Than Ngo <than@redhat.com> - 2.4-11
+- Resolves: bz#1299856, add BR on xorg-x11-font-utils
+
 * Mon Feb 22 2010 Than Ngo <than@redhat.com> - 2.4-10
 - add correct license
 
