@@ -5,7 +5,7 @@
 Summary: Free versions of the 35 standard PostScript fonts.
 Name: urw-fonts
 Version: 2.4
-Release: 15%{?dist}
+Release: 16%{?dist}
 Source: %{name}-%{filippov_version}.tar.bz2
 URL: http://svn.ghostscript.com/ghostscript/tags/urw-fonts-1.0.7pre44/
 # URW holds copyright
@@ -73,6 +73,9 @@ rm -rf $RPM_BUILD_ROOT
 %{fontdir}/*.pfb
 
 %changelog
+* Fri Dec 27 2013 Daniel Mach <dmach@redhat.com> - 2.4-16
+- Mass rebuild 2013-12-27
+
 * Thu May  2 2013 Tom Callaway <spot@fedoraproject.org> - 2.4-15
 - simplify post scriptlet a bit, don't drop output to /dev/null for debugging purposes
 
